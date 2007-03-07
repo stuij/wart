@@ -1,0 +1,60 @@
+** Introduction
+
+Wart is a little website content management system add-on for ucw. A simple one mind, but used in the wild for sites that need to be set up quick and need to be maintained easily. The core revolves around units of text, which can be a list of news items or just a link page. For example if you want to set up a news section, all you have to do is define it like:
+
+(def-text-component news "news as it comes" (title date intro (body-slot body :non-list-p t) link-through))
+
+Hook it into your page for example by putting (render (news home)) somewhere in your home component and you've got a little news facility. Click add underneath your news-items to add an item.
+
+No installation steps beyond hooking up the wart.asd file. Don't like the date? Get rid of it and recompile the def-text-component. That's it.
+
+The backend is provided by Elephant, the persistent object library. So no mucking about with sql tables, queries or the like. Clean and simple.
+
+Further features: Edit where you find it. Markup syntax provided by cl-markdown.
+
+
+** License - LLGPL, see the included LICENSE file
+
+
+** Installation
+
+To get the latest development version, do a darcs get:
+
+darcs get http://redrepublic.org/repos/wart
+
+Wart depends on:
+- (an older version of?) ucw_dev
+- the stuff ucw depends on
+- cl-markdown
+- elephant
+
+Note: you know best yourself, but i'd recommend using the berkeley db backend of elephant. At the time of writing it's the only one which properly handles concurrency, it's by far the fastest of the backends, and for websites it's license isn't in the way.
+
+Note: Wart is not tested on newer versions of UCW, so be ware. Could well be that all works well. I'm planning to test it in a couple of weeks.
+
+Link the wart.asd file to asdf and evaluate start.lisp to be found in the wart directory or use your own ucw magic of course. Should work out of the box, but look at config.lisp for fairly obvious configuration options.
+
+
+** Usage
+
+* On the code side
+
+Well, the theory below this text blocks thing is that of different layers of text units. At the highest layer we find the hell-gate mixin for a component in which you want to nest protected and or editable components. You can log in by rendering the log-me-into component and giving the right password.  The logged-in-propagate-mixin will propagate the logged-in status to nested components. The editable-text component is such a component and it's the base for editable texts. It's got some slots, of which the paging related ones have yet to get a function. The most important is the text-class slot, which holds the text-unit class. It is a persistent class, who's slots hold classes which represent the elements of a text: header, intro, body,... Each with their own css class. Standard defined are:
+
+- body
+- title
+- intro
+- date
+- origin
+- link-through
+
+They all have self-explaining functions, except for link-through (and origin perhaps, which is used to give the origin of an article). Link-through's explanation: When one defines a text-unit one can optionally hint one doesn't want to show an item (usually the body), when all items of a list are shown. The link-through class creates a link which will show the item in question in stead of the list of objects, with all the hidden fields shown. It's the way most blogs or news-sites work.
+
+The public interface to this functionality is the somewhat misnamed define-text-block-solid macro. It takes two names, one for editable-text and one for text-unit. You should really just need to give one, i'm gonna rewrite this.  But anyway, the next argument is a list of slots/text elements. If you give a symbol, it should be the name of one of the before mentioned text element classes (title, body, ..) or one you created yourself (see the example in page.lisp). If you give a list, it should consist of a slot-name, one of the text element classes and optionally the :non-list-p keyword; nil is it's default, t will mean it will not show up in the list. Provide link-through to let your visitors have access to it. (see the example at the beginning of this file)
+
+If you want to add text parts types yourself, you have full control over their look and functionality. It means you'll have to define the class, a constructor function, an edit method and a view method. See page.lisp for an example.
+
+
+* On the client side
+
+This side is as opaque as filtred water. Log in with the help of the login form (In the example, click on the barely visible grey login text left under the (empty) white square). Once you're in all should be clear. Click add to add an item, delete to make it invisible for users, restore to restore a deleted item, edit to edit and click the markdown link to learn about the markdown syntax. On the home page you see two add and markdown links. This is not a bug, these are two item blocks next to each other. 

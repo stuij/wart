@@ -1,0 +1,144 @@
+/* html tags */
+a {
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+  color: #666;
+  border-color: #888;
+  border-width: 0 0 1px 0;
+  border-style: none none dotted none;
+}
+
+a:visited {
+  color: #666;
+  border-color: #888;
+  border-width: 0 0 1px 0;
+  border-style: none none solid none;
+}
+
+a:hover {
+  text-decoration: none;
+  border-style: none none solid none;
+}
+
+.banner{
+  margin-right: 175px;
+}
+
+.front-img{
+  padding: 10px;  
+}
+
+body {
+  background-color: black;
+  margin: 0px;
+  color:#333;
+  font: 14px verdana, arial, sans-serif;
+}
+
+textarea{
+  padding: 1px;
+  border: 1px solid;
+}
+
+input {
+  padding: 1px;
+  border: 1px solid;
+}
+
+select {
+  padding: 1px;
+  border: 1px solid;
+}
+
+button {
+  padding: 1px;
+  border: 1px solid;
+}
+
+submit {
+  padding: 1px;
+  border: 1px solid;
+}
+
+p {
+  margin: 10px;
+}  
+
+/* site css */
+
+.header
+{
+  background-color: black;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.main-body{
+  width: 800px;
+  margin-left: 100px;
+  
+}
+
+.container {
+  background-color: #ffe;
+}
+
+.spacer {
+  clear: both;
+}
+
+/* site software library code included css */
+
+.body-text-block{
+  padding: 10px;
+}
+
+.body-text-block-inner{
+  border: 1px solid;
+  padding: 10px;
+  margin: 0px;
+  border-color: #ccc;
+}
+
+.body-text-header{
+  color: #666;
+  margin: 10px 10px 15px 5px;
+  font: bold 17px verdana, arial, sans-serif;
+}
+
+.body-text-date{
+  margin: 0px 10px 0px 20px;
+  font: bold 10px verdana,arial, sans-serif;
+}
+
+.body-text-origin{
+  margin: 0px 10px 0px 20px;
+  font: bold 10px verdana,arial, sans-serif;
+}
+
+.body-text-link-through{
+  margin: 0px 10px 0px 20px;
+  font: bold 10px verdana,arial, sans-serif;
+}
+.body-text-intro{
+  margin: 0px 10px 0px 40px;
+  font: bold 13px verdana, arial,sans-serif;
+}
+
+.body-text-body{
+  margin: 0px 10px 20px 20px;
+}
+
+/* page specific */
+
+.intro-text{
+  vertical-align: top;
+  width: 250px;
+}
+
+.nyheter{
+  vertical-align: top;
+}

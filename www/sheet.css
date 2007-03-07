@@ -1,0 +1,72 @@
+/* ucw form field css */
+
+.ucw-form-field-valid {
+  border: 1px solid #00ff00;
+}
+.ucw-form-field-invalid {
+  border: 1px solid #ff0000;
+}
+
+/* ucw tabbed pane css */
+
+.ucw-tabbed-pane {
+  position:relative;
+  width: 100%;
+  padding-top: 0px;
+}
+
+.ucw-tabbed-pane-options {
+  font: bold 11px courier;
+  list-style-type: none;
+  padding: 0px 10px 24px 10px;
+  border-bottom: 1px solid #000;
+  margin: 0;
+}
+
+.ucw-tabbed-pane-not-selected, .ucw-tabbed-pane-selected {
+  float: left;
+  height: 21px;
+  background-color: #ccc;
+  margin: 2px 2px 0 2px;
+  border: 1px solid #006;
+}
+
+.ucw-tabbed-pane-selected {
+  border-bottom: 1px solid #fff;
+  background-color: #fff;
+}
+
+.ucw-tabbed-pane-options a {
+  float: left;
+  display: block;
+  color: #666;
+  text-decoration: none;
+  padding: 4px;
+}
+
+.ucw-tabbed-pane-options a:hover {
+  background: #fff;
+  border-width: 0 0 0 0;
+border-color: #000;
+border-style: 1px solid;
+display: block;
+padding: 4px;
+}
+
+.ucw-tabbed-pane-options a,
+.ucw-tabbed-pane-options a:link,
+.ucw-tabbed-pane-options a:visited {
+border-width: 0 0 0 0;
+border-color: inherit;
+border-style: solid;
+display: block;
+padding: 4px;
+}
+
+.ucw-tabbed-pane-body {
+  padding: 10px 10px 10px 15px;
+  background-color: #fff;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
